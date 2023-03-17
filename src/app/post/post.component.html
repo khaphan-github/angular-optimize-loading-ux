@@ -1,0 +1,37 @@
+<div class="containter">
+  <div class="main-content">
+    <div class="header">
+      <div class="avatar skeleton">
+        <div *ngIf="imagesURL">
+          <img width="60" src="{{imagesURL}}" alt="image" />
+        </div>
+      </div>
+
+      <div class="user-info">
+        <h3 *ngIf="username; else skeletonUsername">{{username}}</h3>
+        <ng-template #skeletonUsername>
+          <div class="skeleton skeleton-line skeleton-long"></div>
+        </ng-template>
+
+        <span *ngIf="desc; else skeletonDescription">{{desc}}</span>
+        <ng-template #skeletonDescription>
+          <span class="skeleton skeleton-line skeleton-short"></span>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="content; else seletonParagraph" class="content">
+      <p> {{content}} </p>
+    </div>
+    <ng-template #seletonParagraph>
+      <div class="skeleton-template">
+        <div class="skeleton skeleton-paragraph skeleton-long">
+        </div>
+        <div class="skeleton skeleton-paragraph skeleton-long">
+        </div>
+        <div class="skeleton skeleton-paragraph skeleton-short">
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
